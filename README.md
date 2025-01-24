@@ -30,12 +30,13 @@ Bu görüntüde ürünlerin son stoklarına ait grafik bulunmaktadır.
 Kullanıcı bilgilerini güncelleme ekranı.
 ![Ekran görüntüsü 2025-01-25 004944](https://github.com/user-attachments/assets/29c3dd1e-b1f7-48e3-a037-3619d57aad7b)
 
-https://youtu.be/g6iCnBWzkJU?si=rHp3eXXDyqjzRzq_
+
 
 
 Satışları yapılan ürünlerin listesi.
 ![Ekran görüntüsü 2025-01-25 005333](https://github.com/user-attachments/assets/ee9973e2-4b61-4c6b-b980-7eff010a5563)
 
 
-
+Projeyi anlattığımız video linki.
+https://youtu.be/g6iCnBWzkJU?si=rHp3eXXDyqjzRzq_
 
