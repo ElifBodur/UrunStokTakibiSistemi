@@ -40,3 +40,7 @@ Satışları yapılan ürünlerin listesi.
 Projeyi anlattığımız video linki.
 https://youtu.be/g6iCnBWzkJU?si=rHp3eXXDyqjzRzq_
 
+
+Kodları anlattığımız video linki.
+https://youtu.be/XgH7waPPplw?si=EMEANdqjeAsICqtb
+
