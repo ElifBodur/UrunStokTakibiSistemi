@@ -1,0 +1,113 @@
+﻿@using UrunStokTakip.Models
+@model List<Urun>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        <div style="width:25%; float:left">
+            @Html.TextBox("ara", null, new { @class = "form-control", @placeholder = "Ürün adı veya açıklama arayınız" })
+            <div style="float:left">
+                <input type="submit" name="btn" value="Ara" class="btn btn-info" />
+            </div>
+            <br />
+        </div>
+    }
+</div>
+
+<br />
+<a href="@Url.Action("Ekle", "Urun")" class="btn btn-primary">Ekle</a>
+<br />
+<br />
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Resim</th>
+            <th>Ad</th>
+            <th>Açıklama</th>
+            <th>Popüler</th>
+            <th>Fiyat</th>
+            <th>Stok</th>
+            <th>Kategori</th>
+            @if (User.IsInRole("A"))
+            {
+                <th>Sil</th>
+                <th>Düzenle</th>
+            }
+            @if (User.IsInRole("U"))
+            {
+                <th>Sepete Ekle</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Count > 0)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @if (!string.IsNullOrEmpty(item.Resim))
+                        {
+                            <img src="@Url.Content("~/Content/Image/" + item.Resim)" width="80" height="80" alt="Ürün Resmi" />
+                        }
+                        else
+                        {
+                            <span>Resim Yok</span>
+                        }
+                    </td>
+                    <td>@item.Ad</td>
+                    <td>@item.Aciklama</td>
+                    <td>
+                        @if (item.Populer ?? false)
+                        {
+                            <span class="btn btn-success">Evet</span>
+                        }
+                        else
+                        {
+                            <span class="btn btn-danger">Hayır</span>
+                        }
+                    </td>
+                    <td>@item.Fiyat</td>
+                    <td>@item.Stok</td>
+                    <td>
+                        @if (item.Kategori != null)
+                        {
+                            @item.Kategori.Ad
+                        }
+                        else
+                        {
+                            <span>Kategori Yok</span>
+                        }
+                    </td>
+                    @if (User.IsInRole("A"))
+                    {
+                        <td>
+                            @Html.ActionLink("Sil", "Sil", new { id = item.Id },
+                            new { @class = "btn btn-danger", onclick = "return confirm('Silmek istiyor musunuz?');" })
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Guncelle", "Urun", new { id = item.Id })" class="btn btn-warning">Düzenle</a>
+                        </td>
+                    }
+                    @if (User.IsInRole("U"))
+                    {
+                        <td>
+                            <a href="@Url.Action("SepeteEkle", "Sepet", new { id = item.Id })" class="btn btn-success">Sepete Ekle</a>
+                        </td>
+                    }
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="8" class="text-center">Hiç ürün bulunamadı.</td>
+            </tr>
+        }
+    </tbody>
+</table>
